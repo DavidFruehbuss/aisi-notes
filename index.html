@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Notes on a German AI Safety Institute</title>
+<meta name="description" content="Brainstorming notes on the teams, mandate and staffing a German AI Safety Institute would need.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+*,*::before,*::after { box-sizing: border-box; }
+
+:root {
+  --paper: #f7f8fa;
+  --panel: #edf0f5;
+  --ink: #131820;
+  --ink-soft: #4c5768;
+  --muted: #6b7686;
+  --accent: #1a4a7a;
+  --accent-soft: #dfe7f1;
+  --line: #dce1e9;
+  --add-ink: #2c6a4d;
+  --add-bg: #e6f2ea;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #12161e;
+    --panel: #1b212c;
+    --ink: #e7eaf0;
+    --ink-soft: #b3bcca;
+    --muted: #8b96a6;
+    --accent: #8ab8e2;
+    --accent-soft: #1e2a3a;
+    --line: #29313f;
+    --add-ink: #8ecfae;
+    --add-bg: #17281f;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #12161e;
+  --panel: #1b212c;
+  --ink: #e7eaf0;
+  --ink-soft: #b3bcca;
+  --muted: #8b96a6;
+  --accent: #8ab8e2;
+  --accent-soft: #1e2a3a;
+  --line: #29313f;
+  --add-ink: #8ecfae;
+  --add-bg: #17281f;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: 1.0625rem;
+  line-height: 1.62;
+  margin: 0;
+  padding: clamp(2rem, 6vw, 4.5rem) clamp(1.1rem, 5vw, 2rem) 5rem;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 40rem; margin: 0 auto; display: flex; flex-direction: column; gap: 1.15rem; }
+
+.masthead { display: flex; flex-direction: column; gap: .55rem; margin-bottom: .4rem; }
+.masthead h1 {
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
+  font-size: clamp(1.85rem, 6vw, 2.5rem); font-weight: 600; letter-spacing: -.02em;
+  line-height: 1.12; text-wrap: balance; margin: 0; color: var(--ink);
+}
+.byline {
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
+  font-size: .875rem; color: var(--muted); margin: 0;
+}
+.masthead .bar { height: 3px; width: 4.5rem; background: var(--accent); margin: .5rem 0 .1rem; }
+
+.toc {
+  border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  padding: 1rem 0; margin: .6rem 0 .4rem;
+}
+.toc p {
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
+  font-size: .7rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--muted); margin: 0 0 .6rem;
+}
+.toc ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .35rem .5rem; }
+.toc li { margin: 0; }
+.toc a {
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
+  font-size: .82rem; color: var(--accent); text-decoration: none;
+  border: 1px solid var(--line); border-radius: 2px; padding: .2rem .5rem; display: inline-block;
+}
+.toc a:hover, .toc a:focus-visible { border-color: var(--accent); background: var(--accent-soft); }
+
+h1.sec {
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
+  font-size: .8rem; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--accent); margin: 1.8rem 0 0; padding-bottom: .5rem;
+  border-bottom: 1.5px solid var(--accent);
+}
+h2 {
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
+  font-size: 1.32rem; font-weight: 600; letter-spacing: -.01em;
+  margin: 1.7rem 0 0; scroll-margin-top: 1rem; text-wrap: balance;
+}
+h3.sub {
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
+  font-size: 1.02rem; font-weight: 600; color: var(--accent);
+  margin: 1.5rem 0 0; text-wrap: balance;
+}
+p { margin: 0; }
+p + p { margin-top: .85rem; }
+
+p.phase {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: .78rem; line-height: 1.5; color: var(--accent);
+  background: var(--accent-soft); border-radius: 2px;
+  padding: .45rem .65rem; margin-top: .55rem;
+}
+p.phase.add { color: var(--add-ink); background: var(--add-bg); }
+p.phase.add::before { content: "+ additional  "; font-weight: 600; }
+
+.example {
+  background: var(--panel); border-left: 2px solid var(--line);
+  padding: .8rem 1rem; margin-top: .9rem; border-radius: 0 3px 3px 0;
+}
+.ex-label {
+  display: block; font-family: "IBM Plex Sans", system-ui, sans-serif;
+  font-size: .66rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: .35rem;
+}
+.ex-body { display: block; font-size: .95rem; line-height: 1.55; color: var(--ink-soft); }
+
+ul { list-style: none; margin: .7rem 0 0; padding: 0; display: flex; flex-direction: column; gap: .8rem; }
+li { position: relative; padding-left: 1.15rem; }
+li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
+.lead { display: block; font-weight: 600; }
+.detail { display: block; margin-top: .25rem; color: var(--ink-soft); }
+strong { font-weight: 600; }
+
+footer {
+  margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid var(--line);
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
+  font-size: .78rem; color: var(--muted);
+}
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.dl { margin: .35rem 0 0; }
+.dl a {
+  font-family: "IBM Plex Sans", system-ui, sans-serif; font-size: .82rem;
+  color: var(--accent); text-decoration: none;
+  border: 1px solid var(--line); border-radius: 2px; padding: .3rem .6rem; display: inline-block;
+}
+.dl a:hover, .dl a:focus-visible { border-color: var(--accent); background: var(--accent-soft); }
+
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="masthead">
+    <h1>Notes on a German AI Safety Institute</h1>
+    <div class="bar"></div>
+    <p class="byline">David Fruehbuss &middot; Beno&icirc;t Larrouturou &middot; September 2026</p>
+    <p class="dl"><a href="notes.pdf">Download the PDF (4 pages)</a></p>
+  </header>
+  <nav class="toc">
+    <p>Contents</p>
+    <ul><li><a href="#diplomacy-team">Diplomacy team</a></li><li><a href="#child-safety-and-education">Child Safety and education</a></li><li><a href="#guarding-democracy">Guarding Democracy</a></li><li><a href="#cybersecurity">Cybersecurity</a></li><li><a href="#biosecurity">Biosecurity</a></li><li><a href="#economic">Economic</a></li><li><a href="#advanced-economics-team">Advanced Economics team</a></li><li><a href="#further-recommendations">Further recommendations</a></li></ul>
+  </nav>
+  <p>Note on headcount: Phase 1 estimates are in the range of the UK&#x27;s AI safety institute&#x27;s head-count (about 260), which might be ambitious at the start but should be on the lower end of consideration.</p>
+<h1 class="sec">Teams:</h1>
+<ul><li>All teams should work and be heavily informing the corresponding ministries and agencies</li></ul>
+<h2 id="diplomacy-team">Diplomacy team</h2>
+<p>This is the single most important team. Both capitalising on AI opportunity and mitigating AI risks require international coordination and diplomacy.</p>
+<p>For AI safety most experts believe that the single most important action right now is stopping the race dynamics between governments and companies, especially between China and the US. Germany as biggest economy in Europe can facilitate that international contracts on this are made and are being enforced (Monitoring and verification technologies that let rivaling countries check each other on keeping of agreements and red lines are a crucial area of research that AI safety researchers are currently racing to improve). It likely is crucial to create a league of big powers (outside of China and the US). On their own these countries do not have enough leverage on how much power is concentrated and how much risk is being taken, but together they would have it. At the same time Germany of all countries needs to be able to talk to both sides.</p>
+<p>Channels to China and the US, as well as the rest of the world that include AI and AI safety expertise on both sides need to be created and strengthened.</p>
+<ul><li><strong>We heavily recommend reading or listening to AI2040 for a fast (but to many experts plausible) map of AI scenarios</strong></li><li><strong>We should be developing similar scenarios and plans for slow and fast timelines of AI progress to inform government decisions and make sure we are prepared and start developing plans and strategies early enough</strong></li></ul>
+<h3 class="sub">Verification and custody</h3>
+<p>We should not wait for an agreement to exist before we build the tools that can check it. Several verification mechanisms can be built now by states that are outside the US-China chip supply chain and Germany is one of them. For example passive network and power sensors that are retrofitted onto existing data centres and that can distinguish training from inference. Building this takes about five years. Germany is not a frontier state, so this is one of the few contributions we can actually deliver ourselves instead of only asking others to act.</p>
+<p>The second part of this is custody and currently nobody is working on it. If a major Western AI company fails in a disorderly way, there is no framework for what happens to its model weights. Something comparable was done for nuclear material and expertise when the Soviet state that held them dissolved. Germany can push for frontier weights to be classified as dual-use technology and for custody arrangements that survive the insolvency of a company. We can start this domestically and we do not need an international agreement for it.</p>
+<p>No major Western democracy signed the founding agreement of the World AI Cooperation Organization (WAICO), and nobody outside China has started to build a comparable channel that deals only with loose frontier capability and is kept separate from the wider AI competition. Germany does not have to lead this immediately and we should not claim a neutrality that we do not have. But the Institute should watch WAICO and any successor or rival forum permanently and track who joins it, what it actually does and where a narrow channel on custody and early warning could be attached to it. Then we are prepared when someone else moves.</p>
+<h2 id="child-safety-and-education">Child Safety and education</h2>
+<p>Crucially important. There are huge risks and opportunities in this area. We are not experts on this, but making sure AI across the board serves to increase education for both children and adults instead of creating a sort of brain-rot or information overload seems important for Germany&#x27;s future.</p>
+<h2 id="guarding-democracy">Guarding Democracy</h2>
+<p class="phase">Phase 1: 20-60 people</p>
+<p>AI is extremely good at deception and influencing people. Furthermore AI generated content can distort truth, the news landscape and erode trust in any source of information. This creates a huge risk and crisis for democracy. We need tools, solutions and policies to combat this threat at scale.</p>
+<h2 id="cybersecurity">Cybersecurity</h2>
+<p class="phase">Phase 1: 20-50 people (Heavy integration with BSI and BND; also scale up of their internal teams)</p>
+<p>The risks here are already obvious and increasing. Mythos like capabilities are already emerging in open source models in China (safeguards of open-source models are much easier to circumvent and it&#x27;s only a matter of time). More capable models than Mythos already exist and future models will likely be stronger. Every bit of digital infrastructure including military, government, financial and health will be vulnerable. We need strategies for cyberdefence of these systems (potentially deploying AI as defenders &rarr; which has its own very dangerous risks). Deep AI understanding and expertise will be crucial.</p>
+<h2 id="biosecurity">Biosecurity</h2>
+<p class="phase">Phase 1: at least 20 people &rarr; Phase 2: 100+</p>
+<p>You need people that can anticipate present and emergent risks from various directions. In terms of AI development both big AI models as well as specialised biological AI models create a wide linked risk landscape. This requires a huge number of safety measures, that have to be identified and developed. From monitoring the abilities of all new AI models being released, including all the specialised biological ones, which are released open source every day, to understanding all possible supply chains for the creation of biological weapons and creating bottlenecks and control points in these chains.</p>
+<h2 id="economic">Economic</h2>
+<p class="phase">Phase 1: 20 AI economics researchers + 20 general economics researchers &rarr; if effective scale too much bigger</p>
+<p>You need people building economic policies with deep understanding of AI progress and AI value chains in order to allow Germany to capture some of the AI opportunities. Things like cheap energy and a much more competitive startup and venture capital landscape will be critical but in order to build these the right way you will want the best understanding of where to make policy changes and where Germany should invest and where we might waste money. For example investing long-term in fusion might be an area where Germany would be in a good position but committing billions to the wrong fusion solution or company would be very costly as more innovative startups and new solutions come along.  It is a fine balance of investing and supporting without underestimating that AI might change the landscape drastically. Getting these billion euro decisions right, will require having a large AI x Economics team.</p>
+<p>Beyond this monitoring impact on labour markets and mitigating potential spikes in unemployment will be crucial to avoid risking huge strain on our social security systems and people&#x27;s lives.</p>
+<h3 class="sub">Physical constraints and trade-offs</h3>
+<p class="phase add">Phase 1: 3 to 6 people, sitting inside the Economic team instead of as a separate team, reporting to both Economic and Advanced Economics so that the numbers feed into the labour market work and into any compute target the Institute is asked to sign off on.</p>
+<p>The Economic team also needs people who price the material inputs of things like cheap energy and fusion, and not only the financial ones. AI is the latest technology drawing on the same resources and many of them are already listed as at risk in Europe. Every AI buildout plan should come with a bill of materials for copper, gallium, water and grid capacity, checked against what German and EU supply can realistically deliver by 2030 and 2035 and not against the pipelines that are announced.</p>
+<div class="example"><span class="ex-label">Example</span><span class="ex-body">Gallium is the tightest case. Of all assessed minerals it has the highest share of demand growth until 2030 that comes from data centres, and the market is independently projected to become scarce from 2028 on.</span></div>
+<p>The harder work is the trade-offs between sectors that all draw on the same limited tonnage. A kilogram of copper that goes into a data centre can not be used for EV charging infrastructure, for the grid buildout or for industrial electrification. The growth that these other sectors are already claiming exceeds the new supply that is projected, before AI is counted at all. This team should be able to tell a minister on one page what a given compute target costs all the other sectors and not only what it costs the AI budget.</p>
+<div class="keep"><p>The same is true for energy.</p>
+<div class="example"><span class="ex-label">Example</span><span class="ex-body">Nuclear needs roughly six to eight times less critical mineral mass than solar or wind for the power that is actually delivered, once you account for the capacity factor. Renewables on the other hand can likely be built up faster per installation.</span></div></div>
+<p>This is exactly the trade-off behind the point above about committing billions to the wrong fusion solution. It should be run as a standing comparison that is updated and not as a judgement that is made once.</p>
+<h2 id="advanced-economics-team">Advanced Economics team</h2>
+<p class="phase">Phase 1: 10-20 people from AI and economics &rarr; merge with economics team if things start moving fast</p>
+<p>AI could develop very fast and change the economic landscape very dramatically. If that happens and for example (1) suddenly several million jobs can be automated and (2) there is a huge rise in economic competition from all over the world due to shorter learning curves to reproduce a successful company&#x27;s business model from scratch in a different country, we will want to have planned out these scenarios and already developed appropriate solutions together with our allies. This goes beyond the measures we are normally and currently considering in our economics policy making but given that this is a very possible scenario, we should prepare it seriously and carefully. Otherwise we risk losing our economic power which would be catastrophic for Germany.</p>
+<h2 id="further-recommendations">Further recommendations</h2>
+<ul><li><span class="lead">Plan for Scale up 70 mil &rarr; much more</span><span class="detail">Given the enormous opportunity and need for rapid, highly capable decision making in the age of AI, investing in building up teams that can inform decisions and build policy and strategy solutions is the single most valuable thing any government can do. So it makes sense to consider scaling it up dramatically in the future.</span></li><li><span class="lead">Hire work environment teams</span><span class="detail">You will want the best talent you can get and you will want them to do their best work. The work environment will critically influence both of these. Beyond offering facilities like gyms, you will for example want someone who makes sure that work locations are designed to increase productivity and well being with things like plants, mental rest areas and nice coffee places. Most research institutes do a horrible job at this.</span></li><li>Hire university students as interns: We need talent in this space and we need to attract it as early and proactively as possible. Internships are a great way to do this and to allow potential candidates a way in without going through the necessarily very competitive hiring process for full roles</li><li>Actively connect to research institutes, think tanks and universities</li></ul>
+  <footer>Working notes. Staffing figures are Phase 1 estimates.</footer>
+</div>
+
+</body>
+</html>
