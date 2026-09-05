@@ -150,11 +150,10 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   color: var(--accent); text-decoration: none; border: 1px solid var(--line);
   border-radius: 2px; padding: .3rem .6rem; display: inline-block; }
 .dl a:hover, .dl a:focus-visible { border-color: var(--accent); background: var(--accent-soft); }
-sup.cite { font-family: "IBM Plex Sans", system-ui, sans-serif; font-size: .62em; color: var(--accent); }
-ol.sources { margin: .6rem 0 0; padding-left: 1.3rem; font-size: .9rem; color: var(--ink-soft);
-  display: flex; flex-direction: column; gap: .5rem; }
-ol.sources li { padding-left: .2rem; }
-ol.sources li::before { content: none; }
+a.ref, a[href^="mailto:"] { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--line); }
+a.ref:hover, a[href^="mailto:"]:hover { border-bottom-color: var(--accent); }
+p.closing { margin-top: 1.6rem; padding-top: 1rem; border-top: 1px solid var(--line);
+  font-size: .95rem; color: var(--ink-soft); }
 
 </style>
 </head>
@@ -165,7 +164,7 @@ ol.sources li::before { content: none; }
     <h1>Notes on a German AI Safety Institute</h1>
     <div class="bar"></div>
     <p class="byline">David Fruehbuss &middot; Beno&icirc;t Larrouturou &middot; September 2026</p>
-    <p class="dl"><a href="notes.pdf">Download the PDF (5 pages)</a></p>
+    <p class="dl"><a href="notes.pdf">Download the PDF (4 pages)</a></p>
   </header>
   <nav class="toc">
     <p>Contents</p>
@@ -179,7 +178,7 @@ ol.sources li::before { content: none; }
 <p>This is the single most important team. Both capitalising on AI opportunity and mitigating AI risks require international coordination and diplomacy.</p>
 <p>For AI safety most experts believe that the single most important action right now is stopping the race dynamics between governments and companies, especially between China and the US. Germany as the biggest economy in Europe can facilitate that international contracts on this are made and are being enforced (Monitoring and verification technologies that let rivaling countries check each other on keeping agreements and red lines are a crucial area of research that AI safety researchers are currently racing to improve). It likely is crucial to create a league of big powers (outside of China and the US). On their own these countries do not have enough leverage on how much power is concentrated and how much risk is being taken, but together they would have it. At the same time Germany of all countries needs to be able to talk to both sides.</p>
 <p>Channels to China and the US, as well as the rest of the world that include AI and AI safety expertise on both sides need to be created and strengthened.</p>
-<ul><li><strong>We heavily recommend reading or listening to AI2040<sup class="cite">1</sup> for a fast (but to many experts plausible) map of AI scenarios</strong></li><li><strong>We should be developing similar scenarios and plans for slow and fast timelines of AI progress to inform government decisions and make sure we are prepared and start developing plans and strategies early enough</strong></li></ul>
+<ul><li><strong>We heavily recommend reading or listening to AI2040 (<a class="ref" href="https://ai-2040.com">ai-2040.com</a>) for a fast (but to many experts plausible) map of AI scenarios</strong></li><li><strong>We should be developing similar scenarios and plans for slow and fast timelines of AI progress to inform government decisions and make sure we are prepared and start developing plans and strategies early enough</strong></li></ul>
 <h3 class="sub">Verification and custody</h3>
 <p>We should not wait for an agreement to exist before we build the tools that can check it. Several verification mechanisms can be built now by states that are outside the US-China chip supply chain and Germany is one of them. For example passive network and power sensors that are retrofitted onto existing data centres and that can distinguish training from inference. Building this takes about five years. Germany is not a frontier state, so this is one of the few contributions we can actually deliver ourselves instead of only asking others to act.</p>
 <p>The second part of this is custody and currently nobody is working on it. If a major Western AI company fails in a disorderly way, there is no framework for what happens to its model weights. Something comparable was done for nuclear material and expertise when the Soviet state that held them dissolved. Germany can push for frontier weights to be classified as dual-use technology and for custody arrangements that survive the insolvency of a company. We can start this domestically and we do not need an international agreement for it.</p>
@@ -213,8 +212,7 @@ ol.sources li::before { content: none; }
 <p>AI could develop very fast and change the economic landscape very dramatically. If that happens and for example (1) suddenly several million jobs can be automated and (2) there is a huge rise in economic competition from all over the world due to shorter learning curves to reproduce a successful company&#x27;s business model from scratch in a different country, we will want to have planned out these scenarios and already developed appropriate solutions together with our allies. This goes beyond the measures we are normally and currently considering in our economics policy making, but given that this is a very possible scenario, we should prepare for it seriously and carefully. Otherwise we risk losing our economic power, which would be catastrophic for Germany.</p>
 <h2 id="further-recommendations">Further recommendations</h2>
 <ul><li><span class="lead">Plan for Scale up 70 mil &rarr; much more</span><span class="detail">Given the enormous opportunity and need for rapid, highly capable decision making in the age of AI, investing in building up teams that can inform decisions and build policy and strategy solutions is the single most valuable thing any government can do. So it makes sense to consider scaling it up dramatically in the future.</span></li><li><span class="lead">Hire work environment teams</span><span class="detail">You will want the best talent you can get and you will want them to do their best work. The work environment will critically influence both of these. Beyond offering facilities like gyms, you will for example want someone who makes sure that work locations are designed to increase productivity and well-being with things like plants, mental rest areas and nice coffee places. Most research institutes do a horrible job at this.</span></li><li>Hire university students as interns: We need talent in this space and we need to attract it as early and proactively as possible. Internships are a great way to do this and to allow potential candidates a way in without going through the necessarily very competitive hiring process for full roles</li><li>Actively connect to research institutes, think tanks and universities</li></ul>
-<h1 class="sec">Sources</h1>
-<ol class="sources"><li>Thomas Larsen, Romeo Dean, Brendan Halstead, Eli Lifland, Ryan Greenblatt and Daniel Kokotajlo, &quot;AI 2040: Plan A&quot;, AI Futures Project, 2026. ai-2040.com — an audio version is available.</li></ol>
+<p class="closing">If it would be helpful, we are happy to provide more details and recommendations. You can reach me at <a href="mailto:fruehbuss@biochem.mpg.de">fruehbuss@biochem.mpg.de</a>.</p>
   <footer>Working notes. Staffing figures are Phase 1 estimates.</footer>
 </div>
 
